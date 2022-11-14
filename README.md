@@ -24,8 +24,8 @@ print(captcha_token)
 
 ```
 
-## Working on
+## TODO
 
-- Proxy support
+- Add proxy support
 
-- Support for importing chrome profiles
+- Add support for importing chrome profiles
