@@ -7,7 +7,7 @@ Simple captcha harvester for python. Currently supporting Hcapctha and Recaptcha
 ## Install with pip
 
 ```bash
-pip install PyHarvester
+pip install pyharvester
 ```
 ## Usage
 
