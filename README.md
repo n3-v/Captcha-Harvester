@@ -4,15 +4,15 @@
 Simple captcha harvester for python. Currently supporting Hcapctha and Recaptcha (v2, v3)
 
 
-## Install dependencies
+## Install with pip
 
 ```bash
-pip install -r requirements.txt
+pip install PyHarvester
 ```
 ## Usage
 
 ```python
-import harvester
+import pyharvester
 
 #Create a new harvester instace 
 harvester_1 = pyharvester.new(solver_type="recaptchav3", url="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php", site_key="6LdyC2cUAAAAACGuDKpXeDorzUDWXmdqeg-xy696", action="examples/v3scores")
