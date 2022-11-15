@@ -1,6 +1,7 @@
 import os
 import time
 import queue
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -20,6 +21,9 @@ from .exceptions import(
     SolveTimeout,
     )
 
+logging.getLogger('WDM').setLevel(logging.NOTSET)
+os.environ['WDM_LOG'] = "false"
+
 class new:
     def __init__(self, solver_type: str, url: str, site_key: str,action: str = None):
 
@@ -35,18 +39,19 @@ class new:
         self.queue = queue.Queue(maxsize=1)
 
         options = Options()
+        
+
         option_args = ["--allow-insecure-localhost", "--ignore-ssl-errors", 
             "--ignore-certificate-errors-spki-list", "--window-size=500,645", 
             "--ignore-certificate-errors", "user-agent=Chrome",
             "--disable-blink-features","--disable-blink-features=AutomationControlled",
             "--disable-extensions", "disable-infobars", "--allow-profiles-outside-user-dir"]
+
         
         for x in option_args:
             options.add_argument(x)
-
-        options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option('useAutomationExtension', False)
+        
+        options.add_experimental_option('excludeSwitches', ['enable-logging', 'enable-automation'])
 
         self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         self.driver.get(url)
@@ -76,4 +81,3 @@ class new:
 
     def close(self):
         self.driver.close()
-
